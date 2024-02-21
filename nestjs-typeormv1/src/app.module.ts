@@ -10,6 +10,7 @@ import { DatabaseModule } from './database/database.module';
 import { enviroments } from './enviroments';
 import config from './config';
 import { Client } from 'pg';
+import { PeliculasModule } from './peliculas/peliculas.module';
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const client = new Client({
@@ -43,6 +44,7 @@ client.query('SELECT * FROM task ORDER BY id ASC', (err, res) => {
     UsersModule,
     ProductsModule,
     DatabaseModule,
+    PeliculasModule,
   ],
   controllers: [AppController],
   providers: [

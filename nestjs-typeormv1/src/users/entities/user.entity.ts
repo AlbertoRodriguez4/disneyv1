@@ -6,9 +6,11 @@ import {
   UpdateDateColumn,
   OneToOne,
   JoinColumn,
+  OneToMany,
 } from 'typeorm';
 
 import { Customer } from './customer.entity';
+import { Favorito } from 'src/peliculas/entities/favorito.entity';
 
 @Entity()
 export class User {
@@ -39,4 +41,7 @@ export class User {
   @OneToOne(() => Customer, (customer) => customer.user, { nullable: true }) // indicaciones de unión, usuarios que no son clientes
   @JoinColumn() // referencia real
   customer: Customer;
+
+  @OneToMany(() => Favorito, (favorito) => favorito.user)
+  favoritos: Favorito[];
 }
